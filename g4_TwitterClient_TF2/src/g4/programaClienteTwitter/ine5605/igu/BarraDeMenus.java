@@ -16,6 +16,7 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 	JMenu menu;
 	JMenuItem instrucoes;
 	JMenuItem follow;
+	JMenuItem pesquisar;
 
 	GerenciadorTwitter gerenciadorT;
 
@@ -29,10 +30,15 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		
 		follow = new JMenuItem("seguir alguem");
 		follow.addActionListener(this);
+		
+		pesquisar = new JMenuItem("Pesquisar Tweets");
+		pesquisar.addActionListener(this);
+		
 		instrucoes = new JMenuItem("Intruções");
 		instrucoes.addActionListener(this);
 		
 		menu.add(follow);
+		menu.add(pesquisar);
 		menu.add(instrucoes);
 				
 		add(menu);
@@ -51,16 +57,34 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		}
 		
 		else if(e.getSource() == follow){
-			String usuario = JOptionPane.showInputDialog(null, "Insira um nome: Ex: @usuario", "Seguir Usuário", JOptionPane.PLAIN_MESSAGE);
-			
-			try {
-				gerenciadorT.seguirAlguem(usuario);
-			
-			} catch (Exception e1) {
-				
+			if (gerenciadorT.logado != true)
 				JOptionPane.showMessageDialog(this,"você precisa estar logado para poder seguir alguém");
-			}
 			
+			else{			
+				String usuario = JOptionPane.showInputDialog(null, "Insira um nome: Ex: @usuario", "Seguir Usuário", JOptionPane.PLAIN_MESSAGE);
+				try {
+					gerenciadorT.seguirAlguem(usuario);
+				} catch (TwitterException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde seguir" + usuario +
+							", verifique a ortografia." );
+				}
+			}
+
+			
+		}
+		
+		else if (e.getSource() == pesquisar){
+			if (gerenciadorT.logado != true)
+				JOptionPane.showMessageDialog(this,"você precisa estar logado para fazer uma pesquisa");
+
+			else{
+				String pesquisa = JOptionPane.showInputDialog(null, "Insira o termo a ser pesquisado",
+						"Pesquisar Tweets", JOptionPane.PLAIN_MESSAGE);
+				gerenciadorT.getModel().clear();
+				gerenciadorT.searchTweets(pesquisa);
+			}
+
 		}
 	}
 

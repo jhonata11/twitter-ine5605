@@ -20,9 +20,9 @@ public class JanelaPrincipal extends JFrame {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(278, 508));
-
-		setContentPane(new PainelEntrada(gerenciadorT, this));
+		setResizable(false);
 		
+		setContentPane(new PainelEntrada(gerenciadorT, this));
 		setJMenuBar(new BarraDeMenus(gerenciadorT));
 		pack();
 		setLocationRelativeTo(null);
@@ -35,6 +35,7 @@ public class JanelaPrincipal extends JFrame {
 		
 		setContentPane(new PainelTweet(gerenciadorT));
 		setPreferredSize(new Dimension(500, 400));
+		
 		pack();
 	}
 	

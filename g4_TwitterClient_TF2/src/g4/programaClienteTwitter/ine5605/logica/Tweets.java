@@ -8,7 +8,10 @@ public class Tweets {
 	String nome;
 	Icon foto;
 	
-	public Tweets (){
+	public Tweets (String nome, String texto, Icon foto){
+		this.texto = texto;
+		this.nome = nome;
+		
 	}
 	
 	public void setNome (String nome){

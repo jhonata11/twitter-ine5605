@@ -93,9 +93,14 @@ public class PainelEntrada extends JPanel implements ActionListener {
 			try {
 				gerenciadorT.fazLogin(codigo.getText());
 				this.setVisible(false);
+				gerenciadorT.logado = true;
 				jp.setPainelTweet();
 
-			} catch (Exception e1) {
+			} catch (TwitterException e1){
+				JOptionPane.showMessageDialog(this, "ocorreu um erro, e não foi possível conectar");
+			
+			
+			}catch (Exception e1) {
 				// TODO Auto-generated catch block
 				
 				if (codigo.getText().length() == 0)		
@@ -104,6 +109,8 @@ public class PainelEntrada extends JPanel implements ActionListener {
 				else
 					JOptionPane.showMessageDialog(this, "o código informado está incorreto");
 				
+				e1.printStackTrace();
+
 			}
 		}
 
