@@ -87,6 +87,10 @@ public class PainelTweet extends Painel {
 
 		PainelOpcoes painelOpcoes = new PainelOpcoes(gerenciadorTwitter);
 		this.add(painelOpcoes, BorderLayout.EAST);
+		
+		PainelInformacoesUsuario painelInformacoesUsuario= new PainelInformacoesUsuario(gerenciadorTwitter);
+		this.add(painelInformacoesUsuario, BorderLayout.WEST);
+		
 
 		//painel com o campo de texto para escrever um tweet
 		JPanel painelMensagem = new JPanel();

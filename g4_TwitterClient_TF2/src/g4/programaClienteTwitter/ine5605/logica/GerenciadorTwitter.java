@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 
 
+import twitter4j.IDs;
 import twitter4j.QueryResult;
 import twitter4j.ResponseList;
 import twitter4j.Status;
@@ -67,23 +68,23 @@ public class GerenciadorTwitter {
 
 	public void tweetar(String text) throws TwitterException {
 
-			twitter.updateStatus(text);
+		twitter.updateStatus(text);
 	}
 
 
 	public void searchTweets (String s) throws TwitterException{
 		twitter4j.Query query = new twitter4j.Query(s);
 
-			QueryResult resultado = twitter.search(query);
+		QueryResult resultado = twitter.search(query);
 
-			for (Tweet tweet : resultado.getTweets()) {
-				Tweets tweets = new Tweets();
-				tweets.setNome(tweet.getFromUser());
-				tweets.setTexto(tweet.getText());
-				tweets.setFotoDoPerfil(formatador.getIconFromString(tweet.getProfileImageUrl()));
+		for (Tweet tweet : resultado.getTweets()) {
+			Tweets tweets = new Tweets();
+			tweets.setNome(tweet.getFromUser());
+			tweets.setTexto(tweet.getText());
+			//				tweets.setFotoDoPerfil(formatador.getIconFromString(tweet.getProfileImageUrl()));
 
-				model.addElement(tweets);
-			}
+			model.addElement(tweets);
+		}
 	}
 
 	public void seguirAlguem (String nome) throws TwitterException{
@@ -114,12 +115,26 @@ public class GerenciadorTwitter {
 	public void getTimeLine() throws TwitterException{
 		ResponseList<Status> resposta = null;
 
-			resposta = twitter.getHomeTimeline();
-			preencheLista(resposta);
+		resposta = twitter.getHomeTimeline();
+		preencheLista(resposta);
 	}
 
 	public void clearTimeline(){
 		model.clear();
+	}
+	
+	public int getNumeroSeguidores() throws TwitterException{
+		int cont = 0;
+		IDs ids = twitter.getFollowersIDs(-1);
+		cont = ids.getIDs().length;	
+		return cont;
+	}
+	
+	public int getNumeroAmigos() throws TwitterException{
+		int cont = 0;
+		IDs ids = twitter.getFriendsIDs(-1);
+		cont = ids.getIDs().length;	
+		return cont;
 	}
 
 

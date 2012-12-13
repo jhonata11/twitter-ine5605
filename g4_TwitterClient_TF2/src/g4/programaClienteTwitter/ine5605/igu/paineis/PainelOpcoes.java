@@ -18,9 +18,9 @@ import twitter4j.TwitterException;
 public class PainelOpcoes extends Painel {
 
 	private static final long serialVersionUID = 1L;
-	private static final String logoAtualizar =  "http://i49.tinypic.com/ztj6m9.png";
-	private static final String logoFollow = "http://i46.tinypic.com/adn3w0.png";
-	private static final String logoUnfollow = "http://i45.tinypic.com/166kl11.png";
+	private static final String logoAtualizar =  "http://i50.tinypic.com/sxggo5.png";
+	private static final String logoFollow = "http://i46.tinypic.com/2eg5i88.jpg";
+	private static final String logoUnfollow = "http://i47.tinypic.com/wak3li.png";
 	
 	JButton btAtualizaTimeline;
 	JButton btFollow;
@@ -46,7 +46,7 @@ public class PainelOpcoes extends Painel {
 		this.add(btAtualizaTimeline);
 		this.add(btFollow);
 		this.add(btUnfollow);
-		
+	
 	}
 
 
@@ -70,8 +70,6 @@ public class PainelOpcoes extends Painel {
 		} catch (MalformedURLException e) {	}
 		btUnfollow.setBackground(Color.BLACK);
 		btUnfollow.addActionListener(this);
-		
-		
 
 	}
 

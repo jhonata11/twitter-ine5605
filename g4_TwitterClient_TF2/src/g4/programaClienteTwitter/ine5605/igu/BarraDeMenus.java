@@ -18,8 +18,6 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 	JMenu menu;
 	JMenuItem ajudaTF1;
 	JMenuItem ajudaTF2;
-	JMenuItem follow;
-	JMenuItem unfollow;
 	JMenuItem pesquisar;
 
 	GerenciadorTwitter gerenciadorT;
@@ -32,12 +30,6 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		
 		menu = new JMenu("Menu");
 		
-		follow = new JMenuItem("seguir alguem");
-		follow.addActionListener(this);
-		
-		unfollow = new JMenuItem("deixar de seguir alguem");
-		unfollow.addActionListener(this);
-		
 		pesquisar = new JMenuItem("Pesquisar Tweets");
 		pesquisar.addActionListener(this);
 		
@@ -46,9 +38,7 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		
 		ajudaTF2 = new JMenuItem("ajudaTF2");
 		ajudaTF2.addActionListener(this);
-		
-		menu.add(follow);
-		menu.add(unfollow);
+
 		menu.add(pesquisar);
 		menu.add(ajudaTF1);
 		menu.add(ajudaTF2);
