@@ -38,6 +38,7 @@ public class GerenciadorTimeline extends Gerenciador {
 	public void preencheLista(ResponseList<Status> listaPreenchida){
 		for(Status status : listaPreenchida){
 			Tweets tweets = new Tweets();
+			tweets.setId(status.getId());
 			tweets.setFotoDoPerfil(formatador.getIconFromUrl(status.getUser().getProfileImageURL()));
 			tweets.setNome(status.getUser().getName());
 			tweets.setTexto(status.getText());
@@ -62,5 +63,8 @@ public class GerenciadorTimeline extends Gerenciador {
 		model.clear();
 	}
 
+	public void retwittar(long idTweet) throws TwitterException{
+		twitter.retweetStatus(idTweet);
+	}
 
 }

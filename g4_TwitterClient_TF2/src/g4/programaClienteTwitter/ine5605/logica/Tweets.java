@@ -6,8 +6,18 @@ public class Tweets {
 	
 	String texto;
 	String nome;
+	Long Id;
+	
 	Icon fotoDoPerfil;
 	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
 	public Icon getFotoDoPerfil() {
 		return fotoDoPerfil;
 	}

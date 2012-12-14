@@ -126,7 +126,6 @@ public class PainelOpcoes extends Painel {
 			try {
 				gerenciadorAmigos.seguirAlguem(usuario);
 			} catch (TwitterException e1) {
-				e1.printStackTrace();
 				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde seguir" + usuario +
 						", verifique a ortografia." );
 			}
@@ -144,7 +143,6 @@ public class PainelOpcoes extends Painel {
 			try {
 				gerenciadorAmigos.deixarDeSeguirAlguem(usuario);
 			} catch (TwitterException e1) {
-				e1.printStackTrace();
 				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde deixar de seguir" + usuario +
 						", verifique a ortografia." );
 

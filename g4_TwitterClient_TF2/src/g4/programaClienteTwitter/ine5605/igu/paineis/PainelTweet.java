@@ -10,15 +10,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import twitter4j.TwitterException;
@@ -27,7 +32,7 @@ public class PainelTweet extends Painel {
 
 	private static final long serialVersionUID = 1L;
 	private static final String logoTweet =  "http://i49.tinypic.com/2814s54.png";
-	
+
 	GerenciadorAmigos gerenciadorAmigos;
 	GerenciadorTimeline gerenciadorTimeline;
 
@@ -37,6 +42,8 @@ public class PainelTweet extends Painel {
 	private JTextArea escrevaMensagem;
 	private JButton btTweet;
 
+	private JPopupMenu cliqueEsquerdo;
+	private JMenuItem itemRetwittar;
 
 
 	public PainelTweet(GerenciadorAutentitcacao gerenciadorAutenticacao) {
@@ -60,13 +67,30 @@ public class PainelTweet extends Painel {
 		scrollJList.getVerticalScrollBar();
 		scrollJList.getHorizontalScrollBar();
 
+		listaTweets.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent evt) {
+				if (SwingUtilities.isRightMouseButton(evt)) {           	
+					listaTweets.setSelectedIndex(
+							listaTweets.locationToIndex(evt.getPoint()));
+					cliqueEsquerdo.show(listaTweets, evt.getX(), evt.getY()); 
+				}
+			}
+		});
+
+
+		cliqueEsquerdo = new JPopupMenu();
+		itemRetwittar = new JMenuItem("Retwittar");
+		itemRetwittar.addActionListener(this);
+		cliqueEsquerdo.add(itemRetwittar);
+
+
+
 		try {
 			btTweet = new JButton(new ImageIcon( new URL(logoTweet)));
 		} catch (MalformedURLException e) {}
 		btTweet.addActionListener(this);
 
-
-	
 
 		escrevaMensagem = new JTextArea(5, 30);
 		escrevaMensagem.setLineWrap(true);
@@ -94,10 +118,10 @@ public class PainelTweet extends Painel {
 
 		PainelOpcoes painelOpcoes = new PainelOpcoes(gerenciadorAutentitcacao, gerenciadorAmigos, gerenciadorTimeline);
 		this.add(painelOpcoes, BorderLayout.EAST);
-		
+
 		PainelInformacoesUsuario painelInformacoesUsuario= new PainelInformacoesUsuario(gerenciadorAmigos);
 		this.add(painelInformacoesUsuario, BorderLayout.WEST);
-		
+
 
 		//painel com o campo de texto para escrever um tweet
 		JPanel painelMensagem = new JPanel();
@@ -111,10 +135,12 @@ public class PainelTweet extends Painel {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 
 		if (e.getSource() == btTweet
 				&& escrevaMensagem.getText().length() <= 140) {
+
+			final String textoParaTwittar = escrevaMensagem.getText();
 
 			try {
 				gerenciadorTimeline.tweetar(escrevaMensagem.getText());
@@ -133,21 +159,36 @@ public class PainelTweet extends Painel {
 
 			SwingWorker<Void, Void> swingWorker = new SwingWorker<Void, Void>() {
 
-				@Override
-				public Void doInBackground(){
+				protected void done(){
 					try {
-						gerenciadorTimeline.clearTimeline();
-						gerenciadorTimeline.getTimeLine();
-					} catch (TwitterException e1) {}
+						Thread.sleep(3000);
+					} catch (InterruptedException e) {}
+				}
+
+
+				@Override
+				protected Void doInBackground(){
+//					try {
+//						gerenciadorTimeline.tweetar(textoParaTwittar);
+//					} catch (TwitterException e1) {}
 					return null;
 				}
 			};
 			swingWorker.execute();
 
 		}
-		
+
+		else if(e.getSource() == itemRetwittar){
+			Tweets tweet = listaTweets.getSelectedValue();
+
+			try {
+				gerenciadorTimeline.retwittar(tweet.getId());
+			} catch (TwitterException e1) {}
+		}
+
 
 	}
+
 
 
 
