@@ -1,6 +1,6 @@
 package g4.programaClienteTwitter.ine5605.igu;
 
-import g4.programaClienteTwitter.ine5605.logica.GerenciadorTwitter;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorTimeline;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +10,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import twitter4j.TwitterException;
-
 public class BarraDeMenus extends JMenuBar implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -20,12 +18,12 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 	JMenuItem ajudaTF2;
 	JMenuItem pesquisar;
 
-	GerenciadorTwitter gerenciadorT;
+	GerenciadorTimeline gerenciadorTimeline;
 
 	
-	public BarraDeMenus (GerenciadorTwitter gt) {
+	public BarraDeMenus (GerenciadorTimeline gerenciadorTimeline) {
 		
-		gerenciadorT = gt;
+		this.gerenciadorTimeline = gerenciadorTimeline;
 
 		
 		menu = new JMenu("Menu");
@@ -63,22 +61,7 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 					" - Adicionar Pessoa - Digite um usuário para seguir, não esqueça de colocar o @. \n"+
 					" - Pesquisar por tweets - Insira um termo para ser pesquisado.");
 		}
-		
 	
-		else if (e.getSource() == pesquisar){
-			if (gerenciadorT.logado != true)
-				JOptionPane.showMessageDialog(this,"você precisa estar logado para fazer uma pesquisa");
-
-			else{
-				String pesquisa = JOptionPane.showInputDialog(null, "Insira o termo a ser pesquisado",
-						"Pesquisar Tweets", JOptionPane.PLAIN_MESSAGE);
-				gerenciadorT.getModel().clear();
-				try {
-					gerenciadorT.searchTweets(pesquisa);
-				} catch (TwitterException e1) {}
-			}
-
-		}
 	}
 
 }

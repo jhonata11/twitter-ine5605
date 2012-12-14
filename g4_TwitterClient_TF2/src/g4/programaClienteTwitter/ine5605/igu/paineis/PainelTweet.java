@@ -1,8 +1,10 @@
 package g4.programaClienteTwitter.ine5605.igu.paineis;
 
 import g4.programaClienteTwitter.ine5605.igu.cellRenderer.TweetCellRenderer;
-import g4.programaClienteTwitter.ine5605.logica.GerenciadorTwitter;
 import g4.programaClienteTwitter.ine5605.logica.Tweets;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorAmigos;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorAutentitcacao;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorTimeline;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,19 +27,23 @@ public class PainelTweet extends Painel {
 
 	private static final long serialVersionUID = 1L;
 	private static final String logoTweet =  "http://i49.tinypic.com/2814s54.png";
+	
+	GerenciadorAmigos gerenciadorAmigos;
+	GerenciadorTimeline gerenciadorTimeline;
 
-	private GerenciadorTwitter gerenciadorTwitter;	
+
 	private JList<Tweets> listaTweets;
 	private JScrollPane scrollJList;	
-
 	private JTextArea escrevaMensagem;
 	private JButton btTweet;
 
 
 
-	public PainelTweet(GerenciadorTwitter gerenciador) {
+	public PainelTweet(GerenciadorAutentitcacao gerenciadorAutenticacao) {
 
-		gerenciadorTwitter = gerenciador;
+		this.gerenciadorAmigos = new GerenciadorAmigos();
+		this.gerenciadorTimeline = new GerenciadorTimeline();
+		this.gerenciadorAutentitcacao = gerenciadorAutenticacao;
 
 		this.definaComponentes();
 		this.posicioneComponentes();
@@ -47,7 +53,7 @@ public class PainelTweet extends Painel {
 	protected void definaComponentes() {
 		// define os componentes do painel
 
-		listaTweets = new JList<Tweets>(gerenciadorTwitter.getModel());
+		listaTweets = new JList<Tweets>(gerenciadorTimeline.getModel());
 		listaTweets.setPreferredSize(new Dimension(400, 1240));
 		listaTweets.setCellRenderer(new TweetCellRenderer());
 		scrollJList = new JScrollPane(listaTweets);
@@ -67,7 +73,7 @@ public class PainelTweet extends Painel {
 
 
 		try {
-			gerenciadorTwitter.getTimeLine();
+			gerenciadorTimeline.getTimeLine();
 		} catch (TwitterException e1) {}
 
 	}
@@ -85,10 +91,11 @@ public class PainelTweet extends Painel {
 		this.add(scrollJList, BorderLayout.CENTER); 
 
 
-		PainelOpcoes painelOpcoes = new PainelOpcoes(gerenciadorTwitter);
+
+		PainelOpcoes painelOpcoes = new PainelOpcoes(gerenciadorAutentitcacao, gerenciadorAmigos, gerenciadorTimeline);
 		this.add(painelOpcoes, BorderLayout.EAST);
 		
-		PainelInformacoesUsuario painelInformacoesUsuario= new PainelInformacoesUsuario(gerenciadorTwitter);
+		PainelInformacoesUsuario painelInformacoesUsuario= new PainelInformacoesUsuario(gerenciadorAmigos);
 		this.add(painelInformacoesUsuario, BorderLayout.WEST);
 		
 
@@ -110,11 +117,11 @@ public class PainelTweet extends Painel {
 				&& escrevaMensagem.getText().length() <= 140) {
 
 			try {
-				gerenciadorTwitter.tweetar(escrevaMensagem.getText());
+				gerenciadorTimeline.tweetar(escrevaMensagem.getText());
 
 				try {
-					gerenciadorTwitter.clearTimeline();
-					gerenciadorTwitter.getTimeLine();
+					gerenciadorTimeline.clearTimeline();
+					gerenciadorTimeline.getTimeLine();
 				} catch (TwitterException e1) {}
 
 			} catch (TwitterException e1) {
@@ -129,8 +136,8 @@ public class PainelTweet extends Painel {
 				@Override
 				public Void doInBackground(){
 					try {
-						gerenciadorTwitter.clearTimeline();
-						gerenciadorTwitter.getTimeLine();
+						gerenciadorTimeline.clearTimeline();
+						gerenciadorTimeline.getTimeLine();
 					} catch (TwitterException e1) {}
 					return null;
 				}

@@ -1,7 +1,7 @@
 package g4.programaClienteTwitter.ine5605.igu.paineis;
 
 import g4.programaClienteTwitter.ine5605.igu.JanelaPrincipal;
-import g4.programaClienteTwitter.ine5605.logica.GerenciadorTwitter;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorAutentitcacao;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -31,10 +31,10 @@ public class PainelEntrada extends Painel {
 	
 	
 	
-	public PainelEntrada(GerenciadorTwitter gerenciador, JanelaPrincipal jp) {
+	public PainelEntrada(GerenciadorAutentitcacao gerenciador, JanelaPrincipal jp) {
 
 		this.janela = jp;
-		this.gerenciadorTwitter = gerenciador; 
+		this.gerenciadorAutentitcacao = gerenciador; 
 		definaComponentes();
 		posicioneComponentes();
 
@@ -86,7 +86,7 @@ public class PainelEntrada extends Painel {
 
 		if (e.getSource() == gera_codigo) {
 			try {
-				gerenciadorTwitter.geraCodigo();
+				gerenciadorAutentitcacao.geraCodigo();
 			} catch (TwitterException e1) {
 				e1.printStackTrace();
 			}
@@ -95,9 +95,9 @@ public class PainelEntrada extends Painel {
 
 		else {
 			try {
-				gerenciadorTwitter.fazLogin(codigo.getText());
+				gerenciadorAutentitcacao.fazLogin(codigo.getText());
 				this.setVisible(false);
-				gerenciadorTwitter.logado = true;
+				gerenciadorAutentitcacao.logado = true;
 				janela.setPainelTweet();
 
 			} catch (TwitterException e1){

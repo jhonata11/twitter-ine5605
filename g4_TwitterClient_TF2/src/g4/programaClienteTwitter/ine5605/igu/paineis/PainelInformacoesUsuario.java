@@ -1,6 +1,7 @@
 package g4.programaClienteTwitter.ine5605.igu.paineis;
 
-import g4.programaClienteTwitter.ine5605.logica.GerenciadorTwitter;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorAmigos;
+import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorTimeline;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,12 +17,17 @@ public class PainelInformacoesUsuario extends Painel {
 	
 	private static final Color COR_DA_FONTE = new Color(238, 233, 233);
 
+	GerenciadorAmigos gerenciadorAmigos;
+	GerenciadorTimeline gerenciadorTimeline;
+	
 
 	JButton btSeguidores;
 	JButton btAmigos;
 
-	public PainelInformacoesUsuario (GerenciadorTwitter gerenciador) {
-		gerenciadorTwitter = gerenciador;		
+	public PainelInformacoesUsuario (GerenciadorAmigos gerenciador) {
+		gerenciadorAmigos = gerenciador;
+		
+		
 		this.setBackground(Color.BLACK);
 		this.setSize(30,30);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
@@ -34,7 +40,7 @@ public class PainelInformacoesUsuario extends Painel {
 	protected void definaComponentes() {
 		
 		try {
-			btSeguidores = new JButton("S: " + gerenciadorTwitter.getNumeroSeguidores());
+			btSeguidores = new JButton("S: " + gerenciadorAmigos.getNumeroSeguidores());
 		} catch (TwitterException e) {}
 		btSeguidores.setForeground(COR_DA_FONTE);
 		btSeguidores.setBackground(Color.BLACK);
@@ -44,7 +50,7 @@ public class PainelInformacoesUsuario extends Painel {
 		
 
 		try {
-			btAmigos = new JButton("A: " + gerenciadorTwitter.getNumeroSeguidores());
+			btAmigos = new JButton("A: " + gerenciadorAmigos.getNumeroAmigos());
 		} catch (TwitterException e) {}
 		btAmigos.setForeground(COR_DA_FONTE);
 		btAmigos.setBackground(Color.BLACK);
