@@ -16,7 +16,6 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 	JMenu menu;
 	JMenuItem ajudaTF1;
 	JMenuItem ajudaTF2;
-	JMenuItem pesquisar;
 
 	GerenciadorTimeline gerenciadorTimeline;
 
@@ -28,8 +27,7 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		
 		menu = new JMenu("Menu");
 		
-		pesquisar = new JMenuItem("Pesquisar Tweets");
-		pesquisar.addActionListener(this);
+
 		
 		ajudaTF1 = new JMenuItem("ajudaTF1");
 		ajudaTF1.addActionListener(this);
@@ -37,7 +35,6 @@ public class BarraDeMenus extends JMenuBar implements ActionListener{
 		ajudaTF2 = new JMenuItem("ajudaTF2");
 		ajudaTF2.addActionListener(this);
 
-		menu.add(pesquisar);
 		menu.add(ajudaTF1);
 		menu.add(ajudaTF2);
 				

@@ -57,8 +57,7 @@ public class PainelTweet extends Painel {
 
 	@Override
 	protected void definaComponentes() {
-		// define os componentes do painel
-		
+
 		this.defineListaTweets();
 
 		cliqueEsquerdo = new JPopupMenu();
@@ -86,12 +85,10 @@ public class PainelTweet extends Painel {
 
 	@Override
 	protected void posicioneComponentes() {
-		// posiciona os componentes do painel
 		setLayout(new BorderLayout(3, 3));
 		setSize(800, 800);
 
 
-		// painel com a lista de tweets
 		JPanel painelTweets = new JPanel();
 		painelTweets.setBackground(Color.black);
 		this.add(scrollJList, BorderLayout.CENTER); 
@@ -105,7 +102,6 @@ public class PainelTweet extends Painel {
 		this.add(painelInformacoesUsuario, BorderLayout.WEST);
 
 
-		//painel com o campo de texto para escrever um tweet
 		JPanel painelMensagem = new JPanel();
 		painelMensagem.setBackground(Color.black);
 		this.add(painelMensagem, BorderLayout.PAGE_END);
@@ -114,7 +110,7 @@ public class PainelTweet extends Painel {
 
 
 	}
-	
+
 	public void defineListaTweets(){
 
 		listaTweets = new JList<Tweets>(gerenciadorTimeline.getModel());
@@ -151,36 +147,30 @@ public class PainelTweet extends Painel {
 				&& escrevaMensagem.getText().length() <= 140) {
 
 			final String textoParaTwittar = escrevaMensagem.getText();
-
+			
 			try {
-				gerenciadorTimeline.tweetar(escrevaMensagem.getText());
-
-				try {
-					gerenciadorTimeline.clearTimeline();
-					gerenciadorTimeline.getTimeLine();
-				} catch (TwitterException e1) {}
-
+				gerenciadorTimeline.tweetar(textoParaTwittar);
 			} catch (TwitterException e1) {
 
 			}
-			escrevaMensagem.setText("");
 
 
 
 			SwingWorker<Void, Void> swingWorker = new SwingWorker<Void, Void>() {
 
-				protected void done(){
-					try {
-						Thread.sleep(3000);
-					} catch (InterruptedException e) {}
-				}
-
-
 				@Override
 				protected Void doInBackground(){
 					try {
-						gerenciadorTimeline.tweetar(textoParaTwittar);
-					} catch (TwitterException e1) {}
+						
+						escrevaMensagem.setText("Mensagem enviada com sucesso. \nAtualize sua timeline");
+						escrevaMensagem.setForeground(Color.RED);
+						Thread.sleep(3000);
+						
+						escrevaMensagem.setText("");
+						escrevaMensagem.setForeground(Color.BLACK);
+						
+						
+					} catch (InterruptedException e1) {}
 					return null;
 				}
 			};
@@ -193,7 +183,7 @@ public class PainelTweet extends Painel {
 			tweet.setRetweeted(true);
 
 			try {
-				
+
 				gerenciadorTimeline.retwittar(tweet.getId());
 			} catch (TwitterException e1) {}
 		}
