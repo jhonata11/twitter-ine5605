@@ -88,12 +88,16 @@ public class PainelEntrada extends Painel {
 			try {
 				gerenciadorAutentitcacao.geraCodigo();
 			} catch (TwitterException e1) {
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(this, "Um erro interno impediu que o código fosse gerado, lamentamos muito =( ");
 			}
+				gera_codigo.setEnabled(false);
 		}
 
 
 		else {
+			if (codigo.getText().length() == 0)		
+				JOptionPane.showMessageDialog(this, "você deve inserir um código para poder confirmar");
+			
 			try {
 				gerenciadorAutentitcacao.fazLogin(codigo.getText());
 				this.setVisible(false);
@@ -101,20 +105,14 @@ public class PainelEntrada extends Painel {
 				janela.setPainelTweet();
 
 			} catch (TwitterException e1){
-				JOptionPane.showMessageDialog(this, "ocorreu um erro, e não foi possível conectar");
+				JOptionPane.showMessageDialog(this, "ocorreu um erro, e não foi possível conectar. " +
+						"Verifique se o código foi digitado corretamente =(");
 
-
-			}catch (Exception e1) {
-
-				if (codigo.getText().length() == 0)		
-					JOptionPane.showMessageDialog(this, "você deve inserir um código para poder confirmar");
-
-				else
-					JOptionPane.showMessageDialog(this, "o código informado está incorreto");
-
-				e1.printStackTrace();
 
 			}
+
+
+
 		}
 
 	}

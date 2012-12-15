@@ -128,14 +128,19 @@ public class PainelOpcoes extends Painel {
 
 			String usuario = JOptionPane.showInputDialog(null, "Insira um nome: Ex: @usuario", "Seguir Usuário",
 					JOptionPane.PLAIN_MESSAGE);
+			
+			if (usuario.length() == 0)
+				JOptionPane.showMessageDialog(this, "você deve digitar algo no campo");
+
+			
 			try {
 				gerenciadorAmigos.seguirAlguem(usuario);
 			} catch (TwitterException e1) {
-				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde seguir" + usuario +
+				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde seguir " + usuario +
 						", verifique a ortografia." );
 			}
 
-			JOptionPane.showMessageDialog(this, "Sucesso! você está seguindo" + usuario +  "agora. =)");
+			JOptionPane.showMessageDialog(this, "Sucesso! você está seguindo" + usuario +  " agora. =)");
 
 		}
 
