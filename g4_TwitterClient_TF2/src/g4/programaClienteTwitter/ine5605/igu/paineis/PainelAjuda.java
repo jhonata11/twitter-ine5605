@@ -69,23 +69,23 @@ public class PainelAjuda extends JScrollPane{
 				" clique no botão gerar código, entre com seus dados"+
 				" no site, e copie o código que lhe foi dado, coloque-os"+
 				" no campo em branco e clique em confirma.")
-				.append("</p>")
+		.append("</p>")
 
-				.append("<p>")
-				.append("<h2>Como Twittar</h2>")
-				.append("Digite uma mensagem com menos de 140 caracteres " +
+		.append("<p>")
+		.append("<h2>Como Twittar</h2>")
+		.append("Digite uma mensagem com menos de 140 caracteres " +
 						"e clique no botão com uma imagem de passarinho.")
-						.append("</p>")
+		.append("</p>")
 
-						.append("<p>")
-						.append("<h2>Como Ver suas mensagems</h2>")
-						.append("Quando você loga no Piu! suas mensagens já aparecem" +
+		.append("<p>")
+		.append("<h2>Como Ver suas mensagems</h2>")
+		.append("Quando você loga no Piu! suas mensagens já aparecem" +
 								" no painel principal. As mensagens que estão em verde")
-								.append("</p>")
+		.append("</p>")
 
-								.append("<br/>")
-								.append("<hr/>")
-								.append("</div>");
+		.append("<br/>")
+		.append("<hr/>")
+		.append("</div>");
 
 
 		return builderAjuda.toString();
@@ -101,28 +101,28 @@ public class PainelAjuda extends JScrollPane{
 		.append("<h1>Ajuda Trabalho Final 2</h1>")
 		.append("<h2>Atualizar Timeline</h2>")
 		.append(" Clique no botão com símbolo de atualização no canto direito do programa.")
-				.append("</p>")
+		.append("</p>")
 
-				.append("<p>")
-				.append("<h2>Adicionar Pessoas</h2>")
-				.append("Clique no botão com um + ao lado direito do painel " +
-						"que contém os tweets. Logo em seguida digite um usuário para seguir " +
-						"Exemplo : @fiuk")
-						.append("</p>")
+		.append("<p>")
+		.append("<h2>Adicionar Pessoas</h2>")
+		.append("Clique no botão com um + ao lado direito do painel " +
+				"que contém os tweets. Logo em seguida digite um usuário para seguir " +
+				"Exemplo : @fiuk")
+		.append("</p>")
 
-						.append("<p>")
-						.append("<h2>Pesquisar por tweets</h2>")
-						.append("Coloque o termo no campo vazio "+ 
-								"ao lado direito do painel que contém " +
-								"os tweets e insira um termo para ser"+
-								" pesquisado e clique no botão ao lado, que contém uma lupa." +
-								" Os tweets contendo este termo aparecerão em sua Timeline. Para retornar aos seus tweets, simplesmente " +
-								"clique em atualizar")
-								.append("</p>")
+		.append("<p>")
+		.append("<h2>Pesquisar por tweets</h2>")
+		.append("Coloque o termo no campo vazio "+ 
+				"ao lado direito do painel que contém " +
+				"os tweets e insira um termo para ser"+
+				" pesquisado e clique no botão ao lado, que contém uma lupa." +
+				" Os tweets contendo este termo aparecerão em sua Timeline. Para retornar aos seus tweets, simplesmente " +
+				"clique em atualizar")
+		.append("</p>")
 
-								.append("<br/>")
-								.append("<hr/>")
-								.append("</div>");
+		.append("<br/>")
+		.append("<hr/>")
+		.append("</div>");
 
 
 		return builderAjuda.toString();
@@ -140,32 +140,37 @@ public class PainelAjuda extends JScrollPane{
 				"tem um - e coloque o usuário que você deseja" +
 				" deixar de seguir." +
 				"Exemplo : @justinbieber")
-				.append("</p>")
+		.append("</p>")
 
-				.append("<p>")
-				.append("<h2>Quantas pessoas eu sigo?</h2>")
-				.append("Para ver quantas pessoas você segue é simples," +
-						" ao lado esquerdo do painel que contém os tweets tem um" +
-						"ícone 'A', lá lhe dirá quantas pessoas você segue. ")
-						.append("</p>")
+		.append("<p>")
+		.append("<h2>Quantas pessoas eu sigo?</h2>")
+		.append("Para ver quantas pessoas você segue é simples," +
+				" ao lado esquerdo do painel que contém os tweets tem um" +
+				"ícone 'A', lá lhe dirá quantas pessoas você segue. ")
+		.append("</p>")
 
-						.append("<p>")
-						.append("<h2>Quantas pessoas te seguem?</h2>")
-						.append("Para ver quantas te seguem, é o mesmo esquema de pessoas que eu sigo,"+
-								" ao invés de olhar no 'A' você olha no 'S'")
-								.append("</p>")
+		.append("<p>")
+		.append("<h2>Quantas pessoas te seguem?</h2>")
+		.append("Para ver quantas te seguem, é o mesmo esquema de pessoas que eu sigo,"+
+				" ao invés de olhar no 'A' você olha no 'S'")
+		.append("</p>")
 
-								.append("<p>")
-								.append("<h2>Como retwiitar</h2>")
-								.append("Para retwittar uma mensagem, você tem que clicar com o"+
-										" botão direito em cima da mensagem que você quer retwittar"+
-										" e clique no botão retwittar.")
-										.append("</p>")
+		.append("<p>")
+		.append("<h2>Como retwittar</h2>")
+		.append("Para retwittar uma mensagem, você tem que clicar com o"+
+				" botão direito em cima da mensagem que você quer retwittar"+
+				" e clique no botão retwittar.")
+		.append("</p>")
+		
+		.append("<p>")
+		.append("<h2>Data da postagem</h2>")
+		.append("Para vez a data de uma postagem, basta deixar o mouse sobre ela " +
+				"durante alguns segundos.")
+		.append("</p>")
 
-										.append("<br/>")
-										.append("<hr/>")
-
-										.append("</div>");
+		.append("<br/>")
+		.append("<hr/>")
+		.append("</div>");
 
 
 		return builderAjuda.toString();
@@ -187,7 +192,7 @@ public class PainelAjuda extends JScrollPane{
 				"Orientado a Objetos I, cujo o professor é Leandro José Komosinki.")
 
 
-				.append("</div>");
+		.append("</div>");
 
 		return builderAjuda.toString();
 	}
