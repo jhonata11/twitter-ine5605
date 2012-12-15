@@ -53,10 +53,7 @@ public class GerenciadorTimeline extends Gerenciador {
 
 
 	public void getTimeLine() throws TwitterException{
-		ResponseList<Status> resposta = null;
-
-		resposta = twitter.getHomeTimeline();
-		preencheLista(resposta);
+		preencheLista(twitter.getHomeTimeline());
 	}
 
 	public void clearTimeline(){

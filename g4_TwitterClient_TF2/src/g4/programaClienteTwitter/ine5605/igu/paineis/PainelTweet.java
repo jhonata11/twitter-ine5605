@@ -8,7 +8,6 @@ import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.Gerenciador
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -119,7 +118,6 @@ public class PainelTweet extends Painel {
 	public void defineListaTweets(){
 
 		listaTweets = new JList<Tweets>(gerenciadorTimeline.getModel());
-		listaTweets.setPreferredSize(new Dimension(400, 1240));
 		listaTweets.setCellRenderer(new TweetCellRenderer());
 		scrollJList = new JScrollPane(listaTweets);
 		scrollJList.getVerticalScrollBar();
