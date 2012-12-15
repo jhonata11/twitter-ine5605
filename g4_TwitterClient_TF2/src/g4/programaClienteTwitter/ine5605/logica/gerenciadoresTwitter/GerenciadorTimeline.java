@@ -18,7 +18,7 @@ import twitter4j.TwitterException;
 public class GerenciadorTimeline extends Gerenciador {
 
 	private DefaultListModel<Tweets>  model = new DefaultListModel<Tweets>();
-	
+
 	//responsavel pela formatacao do texto de um tweet
 	public Formatador formatador =  new Formatador();
 
@@ -43,15 +43,17 @@ public class GerenciadorTimeline extends Gerenciador {
 
 	public void preencheLista(ResponseList<Status> listaPreenchida){
 		for(Status status : listaPreenchida){
-			
+
 			Tweets tweets = new Tweets();
 			tweets.setId(status.getId());
 			tweets.setFotoDoPerfil(formatador.getIconFromUrl(status.getUser().getProfileImageURL()));
 			tweets.setNome(status.getUser().getName());
 			tweets.setTexto(status.getText());
-				if(status.isRetweetedByMe())
-					tweets.setRetweeted(true);
+			tweets.setDataEmString(formatador.formatarData(status.getCreatedAt()));
 			
+			if(status.isRetweetedByMe())
+				tweets.setRetweeted(true);
+
 
 			model.addElement(tweets);
 		}

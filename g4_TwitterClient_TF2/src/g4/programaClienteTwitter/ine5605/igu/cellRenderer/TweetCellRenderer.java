@@ -35,6 +35,7 @@ public class TweetCellRenderer extends JPanel implements ListCellRenderer<Tweets
 	BorderLayout layout =  new BorderLayout(5,5);
 
 	JEditorPane	texto;
+		
 	JLabel autor;
 	JLabel foto;
 
@@ -83,10 +84,12 @@ public class TweetCellRenderer extends JPanel implements ListCellRenderer<Tweets
 		if (value.isRetweeted()){
 			setBackground(isSelected ?  COR_SELECIONADO_RETWITADO : COR_RETWITADO);
 			texto.setBackground(isSelected ? COR_SELECIONADO_RETWITADO : COR_RETWITADO);
+			setToolTipText(value.getDataEmString());
 		}
 		else {
 			setBackground(isSelected ? COR_SELECIONADO : COR_NORMAL);
 			texto.setBackground(isSelected ? COR_SELECIONADO : COR_NORMAL);
+			setToolTipText(value.getDataEmString());
 		}
 
 		return this;

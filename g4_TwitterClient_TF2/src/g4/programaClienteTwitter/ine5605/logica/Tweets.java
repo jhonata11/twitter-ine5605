@@ -1,5 +1,7 @@
 package g4.programaClienteTwitter.ine5605.logica;
 
+import java.util.Date;
+
 import javax.swing.Icon;
 
 /**
@@ -15,10 +17,28 @@ public class Tweets {
 	String nome;
 	Long Id;
 	Icon fotoDoPerfil;
+	Date data;
 	boolean isRetweeted;
+	String dataEmString;
 	
 	
 	
+	public String getDataEmString() {
+		return dataEmString;
+	}
+
+	public void setDataEmString(String dataEmString) {
+		this.dataEmString = dataEmString;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	public boolean isRetweeted() {
 		return isRetweeted;
 	}
