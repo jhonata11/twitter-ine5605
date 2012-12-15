@@ -100,7 +100,8 @@ public class PainelOpcoes extends Painel {
 		try {
 			btPesquisa = new JButton(new ImageIcon(new URL(logoPesquisa)));
 		} catch (MalformedURLException e) {}
-			btPesquisa.addActionListener(this);
+		btPesquisa.setBackground(Color.BLACK);
+		btPesquisa.addActionListener(this);
 
 
 		painelPesquisa.setBackground(Color.BLACK);
