@@ -12,14 +12,14 @@ import twitter4j.Tweet;
 import twitter4j.TwitterException;
 
 public class GerenciadorTimeline extends Gerenciador {
-	
+
 	private DefaultListModel<Tweets>  model = new DefaultListModel<Tweets>();
 	public Formatador formatador =  new Formatador();
-	
+
 	public void tweetar(String text) throws TwitterException {
 		twitter.updateStatus(text);
 	}
-	
+
 	public void searchTweets (String s) throws TwitterException{
 		twitter4j.Query query = new twitter4j.Query(s);
 
@@ -29,12 +29,12 @@ public class GerenciadorTimeline extends Gerenciador {
 			Tweets tweets = new Tweets();
 			tweets.setNome(tweet.getFromUser());
 			tweets.setTexto(tweet.getText());
-			//				tweets.setFotoDoPerfil(formatador.getIconFromString(tweet.getProfileImageUrl()));
+			tweets.setFotoDoPerfil(formatador.getIconFromString(tweet.getProfileImageUrl()));
 
 			model.addElement(tweets);
 		}
 	}
-	
+
 	public void preencheLista(ResponseList<Status> listaPreenchida){
 		for(Status status : listaPreenchida){
 			Tweets tweets = new Tweets();
@@ -46,7 +46,7 @@ public class GerenciadorTimeline extends Gerenciador {
 			model.addElement(tweets);
 		}
 	}
-	
+
 	public DefaultListModel<Tweets> getModel() {
 		return model;
 	}

@@ -59,25 +59,8 @@ public class PainelTweet extends Painel {
 	@Override
 	protected void definaComponentes() {
 		// define os componentes do painel
-
-		listaTweets = new JList<Tweets>(gerenciadorTimeline.getModel());
-		listaTweets.setPreferredSize(new Dimension(400, 1240));
-		listaTweets.setCellRenderer(new TweetCellRenderer());
-		scrollJList = new JScrollPane(listaTweets);
-		scrollJList.getVerticalScrollBar();
-		scrollJList.getHorizontalScrollBar();
-
-		listaTweets.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent evt) {
-				if (SwingUtilities.isRightMouseButton(evt)) {           	
-					listaTweets.setSelectedIndex(
-							listaTweets.locationToIndex(evt.getPoint()));
-					cliqueEsquerdo.show(listaTweets, evt.getX(), evt.getY()); 
-				}
-			}
-		});
-
+		
+		this.defineListaTweets();
 
 		cliqueEsquerdo = new JPopupMenu();
 		itemRetwittar = new JMenuItem("Retwittar");
@@ -132,6 +115,35 @@ public class PainelTweet extends Painel {
 
 
 	}
+	
+	public void defineListaTweets(){
+
+		listaTweets = new JList<Tweets>(gerenciadorTimeline.getModel());
+		listaTweets.setPreferredSize(new Dimension(400, 1240));
+		listaTweets.setCellRenderer(new TweetCellRenderer());
+		scrollJList = new JScrollPane(listaTweets);
+		scrollJList.getVerticalScrollBar();
+		scrollJList.getHorizontalScrollBar();
+
+		listaTweets.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent evt) {
+				if (SwingUtilities.isRightMouseButton(evt)) {           	
+					listaTweets.setSelectedIndex(
+							listaTweets.locationToIndex(evt.getPoint()));
+					cliqueEsquerdo.show(listaTweets, evt.getX(), evt.getY()); 
+				}
+			}
+		});
+
+
+		cliqueEsquerdo = new JPopupMenu();
+		itemRetwittar = new JMenuItem("Retwittar");
+		itemRetwittar.addActionListener(this);
+		cliqueEsquerdo.add(itemRetwittar);
+
+
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -168,9 +180,9 @@ public class PainelTweet extends Painel {
 
 				@Override
 				protected Void doInBackground(){
-//					try {
-//						gerenciadorTimeline.tweetar(textoParaTwittar);
-//					} catch (TwitterException e1) {}
+					try {
+						gerenciadorTimeline.tweetar(textoParaTwittar);
+					} catch (TwitterException e1) {}
 					return null;
 				}
 			};
