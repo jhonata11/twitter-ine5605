@@ -7,7 +7,7 @@ import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.Gerenciador
 /**
  * 
  * @author Grupo 4 - INE5605
- *  - Eduardo de Meireles Koneski
+ *	- Eduardo de Meireles Koneski
  *	- Guilherme Schmitt
  *	- Jhonata da Rocha
  *	- Thiago Fernandes
