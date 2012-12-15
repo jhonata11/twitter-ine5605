@@ -37,11 +37,15 @@ public class GerenciadorTimeline extends Gerenciador {
 
 	public void preencheLista(ResponseList<Status> listaPreenchida){
 		for(Status status : listaPreenchida){
+			
 			Tweets tweets = new Tweets();
 			tweets.setId(status.getId());
 			tweets.setFotoDoPerfil(formatador.getIconFromUrl(status.getUser().getProfileImageURL()));
 			tweets.setNome(status.getUser().getName());
 			tweets.setTexto(status.getText());
+				if(status.isRetweetedByMe())
+					tweets.setRetweeted(true);
+			
 
 			model.addElement(tweets);
 		}

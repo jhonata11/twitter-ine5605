@@ -26,6 +26,7 @@ public class PainelOpcoes extends Painel {
 	private static final String logoAtualizar =  "http://i50.tinypic.com/sxggo5.png";
 	private static final String logoFollow = "http://i46.tinypic.com/2eg5i88.jpg";
 	private static final String logoUnfollow = "http://i47.tinypic.com/wak3li.png";
+	private static final String logoPesquisa = "http://i47.tinypic.com/24q4mrl.png";
 
 	JButton btAtualizaTimeline;
 	JButton btFollow;
@@ -96,8 +97,11 @@ public class PainelOpcoes extends Painel {
 
 
 		campoDePesquisa = new JTextField(5);
-		btPesquisa = new JButton("p");
-		btPesquisa.addActionListener(this);
+		try {
+			btPesquisa = new JButton(new ImageIcon(new URL(logoPesquisa)));
+		} catch (MalformedURLException e) {}
+			btPesquisa.addActionListener(this);
+
 
 		painelPesquisa.setBackground(Color.BLACK);
 		painelPesquisa.add(campoDePesquisa);
@@ -130,6 +134,8 @@ public class PainelOpcoes extends Painel {
 						", verifique a ortografia." );
 			}
 
+			JOptionPane.showMessageDialog(this, "Sucesso! você está seguindo" + usuario +  "agora. =)");
+
 		}
 
 
@@ -143,10 +149,12 @@ public class PainelOpcoes extends Painel {
 			try {
 				gerenciadorAmigos.deixarDeSeguirAlguem(usuario);
 			} catch (TwitterException e1) {
-				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde deixar de seguir" + usuario +
+				JOptionPane.showMessageDialog(this,"ocorreu um erro, e você não pôde deixar de seguir " + usuario +
 						", verifique a ortografia." );
 
 			}
+
+			JOptionPane.showMessageDialog(this, "Você não está mais segundo " + usuario + " =(");
 		}
 
 		else if(e.getSource() == btPesquisa){

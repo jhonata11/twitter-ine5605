@@ -190,8 +190,10 @@ public class PainelTweet extends Painel {
 
 		else if(e.getSource() == itemRetwittar){
 			Tweets tweet = listaTweets.getSelectedValue();
+			tweet.setRetweeted(true);
 
 			try {
+				
 				gerenciadorTimeline.retwittar(tweet.getId());
 			} catch (TwitterException e1) {}
 		}

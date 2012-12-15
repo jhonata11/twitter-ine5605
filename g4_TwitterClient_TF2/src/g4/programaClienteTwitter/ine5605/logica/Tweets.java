@@ -7,9 +7,18 @@ public class Tweets {
 	String texto;
 	String nome;
 	Long Id;
-	
 	Icon fotoDoPerfil;
+	boolean isRetweeted;
 	
+	
+	public boolean isRetweeted() {
+		return isRetweeted;
+	}
+
+	public void setRetweeted(boolean isRetweeted) {
+		this.isRetweeted = isRetweeted;
+	}
+
 	public Long getId() {
 		return Id;
 	}
