@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import twitter4j.TwitterException;
 
@@ -21,8 +21,8 @@ public class PainelInformacoesUsuario extends Painel {
 	GerenciadorTimeline gerenciadorTimeline;
 	
 
-	JButton btSeguidores;
-	JButton btAmigos;
+	JLabel btSeguidores;
+	JLabel btAmigos;
 
 	public PainelInformacoesUsuario (GerenciadorAmigos gerenciador) {
 		gerenciadorAmigos = gerenciador;
@@ -40,21 +40,21 @@ public class PainelInformacoesUsuario extends Painel {
 	protected void definaComponentes() {
 		
 		try {
-			btSeguidores = new JButton("S: " + gerenciadorAmigos.getNumeroSeguidores());
+			btSeguidores = new JLabel("S: " + gerenciadorAmigos.getNumeroSeguidores());
 		} catch (TwitterException e) {}
 		btSeguidores.setForeground(COR_DA_FONTE);
 		btSeguidores.setBackground(Color.BLACK);
-		btSeguidores.setPreferredSize(new Dimension(30, 21));
+		btSeguidores.setSize(new Dimension(30, 21));
 
 	
 		
 
 		try {
-			btAmigos = new JButton("A: " + gerenciadorAmigos.getNumeroAmigos());
+			btAmigos = new JLabel("A: " + gerenciadorAmigos.getNumeroAmigos());
 		} catch (TwitterException e) {}
 		btAmigos.setForeground(COR_DA_FONTE);
 		btAmigos.setBackground(Color.BLACK);
-		btSeguidores.setPreferredSize(new Dimension(30, 21));
+		btSeguidores.setSize(new Dimension(30, 21));
 
 		
 		
@@ -68,8 +68,7 @@ public class PainelInformacoesUsuario extends Painel {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		//nada nesta versão do programa;
 	}
 
 }
