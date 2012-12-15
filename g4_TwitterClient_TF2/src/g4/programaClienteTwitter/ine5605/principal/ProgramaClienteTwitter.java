@@ -4,6 +4,19 @@ import g4.programaClienteTwitter.ine5605.igu.JanelaPrincipal;
 import g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter.GerenciadorAutentitcacao;
 
 
+/**
+ * 
+ * @author Grupo 4 - INE5605
+ *  - Eduardo de Meireles Koneski
+ *	- Guilherme Schmitt
+ *	- Jhonata da Rocha
+ *	- Thiago Fernandes
+ *
+ *	Projeto "Piu!"
+ *	
+ */
+
+
 public class ProgramaClienteTwitter {
 
 

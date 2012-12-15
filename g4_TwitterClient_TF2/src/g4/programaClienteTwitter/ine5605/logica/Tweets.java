@@ -2,6 +2,13 @@ package g4.programaClienteTwitter.ine5605.logica;
 
 import javax.swing.Icon;
 
+/**
+ * 
+ * Classe que define um tweet, composto por um nome, um texto, uma 
+ * foto e um id especifico.
+ *
+ */
+
 public class Tweets {
 	
 	String texto;
@@ -9,6 +16,7 @@ public class Tweets {
 	Long Id;
 	Icon fotoDoPerfil;
 	boolean isRetweeted;
+	
 	
 	
 	public boolean isRetweeted() {

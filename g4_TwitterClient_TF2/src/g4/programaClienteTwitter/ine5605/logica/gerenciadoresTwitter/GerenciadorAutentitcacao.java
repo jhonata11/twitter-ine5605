@@ -1,8 +1,4 @@
 package g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter;
-
-
-
-
 import java.awt.Desktop;
 
 import java.io.IOException;
@@ -15,10 +11,13 @@ import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
+/**
+ *	Classe responsavel pelos servicos de autenticacao do programa
+ */
+
 public class GerenciadorAutentitcacao extends Gerenciador{
 
 	private RequestToken requestToken;
-	
 	public boolean logado;
 
 

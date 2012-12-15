@@ -27,6 +27,11 @@ import javax.swing.SwingWorker;
 
 import twitter4j.TwitterException;
 
+/**
+ * 
+ * Painel principal, onde estao adicionados os demais paineis.
+ * 
+ */
 public class PainelTweet extends Painel {
 
 	private static final long serialVersionUID = 1L;
@@ -119,6 +124,7 @@ public class PainelTweet extends Painel {
 		scrollJList.getVerticalScrollBar();
 		scrollJList.getHorizontalScrollBar();
 
+		//define as acoes tomadas pelo clique esquerdo
 		listaTweets.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent evt) {

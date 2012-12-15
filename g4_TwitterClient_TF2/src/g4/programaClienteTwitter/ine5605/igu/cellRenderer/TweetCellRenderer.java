@@ -14,6 +14,13 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+
+/**
+*
+*	Classe TweetCellRenderer - Responsavel pela renderizacao dos tweets que serao exibidos na lista de tweets
+*
+*/
+
 public class TweetCellRenderer extends JPanel implements ListCellRenderer<Tweets>{
 
 	private static final long serialVersionUID = 1L;
@@ -38,12 +45,15 @@ public class TweetCellRenderer extends JPanel implements ListCellRenderer<Tweets
 		this.setBorder(BorderFactory
 				.createMatteBorder(0, 0, 1, 0, Color.gray));
 
-		initComponentes();
+		definaComponentes();
 	}
 
 
+	/**
+	 * sao definidas as pisicoes onde cada elemento ficara no cell renderer.
+	 */
 
-	public void initComponentes(){
+	public void definaComponentes(){
 		foto = new JLabel();
 		this.add(foto, BorderLayout.WEST);
 
@@ -54,8 +64,11 @@ public class TweetCellRenderer extends JPanel implements ListCellRenderer<Tweets
 		this.add(texto, BorderLayout.CENTER);
 
 	}
+	
 
-
+	/**
+	 * sao definidos os componentes que serao exibidos na lista de tweets
+	 */
 	@Override
 	public Component getListCellRendererComponent(JList<? extends Tweets> list,
 			Tweets value, int index, boolean isSelected, boolean cellHasFocus) {

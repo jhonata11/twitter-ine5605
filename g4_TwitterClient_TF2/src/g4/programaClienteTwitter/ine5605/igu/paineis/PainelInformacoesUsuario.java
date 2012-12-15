@@ -12,22 +12,29 @@ import javax.swing.JLabel;
 
 import twitter4j.TwitterException;
 
+
+/**
+ * 
+ * Painel onde estao contidas as informacoes do usuario.
+ *
+ */
+
 public class PainelInformacoesUsuario extends Painel {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final Color COR_DA_FONTE = new Color(238, 233, 233);
 
 	GerenciadorAmigos gerenciadorAmigos;
 	GerenciadorTimeline gerenciadorTimeline;
-	
+
 
 	JLabel btSeguidores;
 	JLabel btAmigos;
 
 	public PainelInformacoesUsuario (GerenciadorAmigos gerenciador) {
 		gerenciadorAmigos = gerenciador;
-		
-		
+
+
 		this.setBackground(Color.BLACK);
 		this.setSize(30,30);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
@@ -38,7 +45,7 @@ public class PainelInformacoesUsuario extends Painel {
 
 	@Override
 	protected void definaComponentes() {
-		
+
 		try {
 			btSeguidores = new JLabel("S: " + gerenciadorAmigos.getNumeroSeguidores());
 		} catch (TwitterException e) {}
@@ -46,8 +53,8 @@ public class PainelInformacoesUsuario extends Painel {
 		btSeguidores.setBackground(Color.BLACK);
 		btSeguidores.setSize(new Dimension(30, 21));
 
-	
-		
+
+
 
 		try {
 			btAmigos = new JLabel("A: " + gerenciadorAmigos.getNumeroAmigos());
@@ -56,8 +63,8 @@ public class PainelInformacoesUsuario extends Painel {
 		btAmigos.setBackground(Color.BLACK);
 		btSeguidores.setSize(new Dimension(30, 21));
 
-		
-		
+
+
 	}
 
 	@Override

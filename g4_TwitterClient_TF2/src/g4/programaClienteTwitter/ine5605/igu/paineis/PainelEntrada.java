@@ -23,14 +23,21 @@ public class PainelEntrada extends Painel {
 	private static final long serialVersionUID = 1L;
 	private static final String LOGO = "http://i46.tinypic.com/mt1rip.png";
 	private JLabel icon;
-	
+
 	JButton gera_codigo;
 	JButton confirma;
 	JTextField codigo;
 	JLabel frase;
-	
-	
-	
+
+
+	/**
+	 * 
+	 * Painel responsavel por mostrar a primeira imagem que aparece para o 
+	 * usuario.
+	 *
+	 */
+
+
 	public PainelEntrada(GerenciadorAutentitcacao gerenciador, JanelaPrincipal jp) {
 
 		this.janela = jp;
@@ -90,14 +97,14 @@ public class PainelEntrada extends Painel {
 			} catch (TwitterException e1) {
 				JOptionPane.showMessageDialog(this, "Um erro interno impediu que o código fosse gerado, lamentamos muito =( ");
 			}
-				gera_codigo.setEnabled(false);
+			gera_codigo.setEnabled(false);
 		}
 
 
 		else {
 			if (codigo.getText().length() == 0)		
 				JOptionPane.showMessageDialog(this, "você deve inserir um código para poder confirmar");
-			
+
 			try {
 				gerenciadorAutentitcacao.fazLogin(codigo.getText());
 				this.setVisible(false);

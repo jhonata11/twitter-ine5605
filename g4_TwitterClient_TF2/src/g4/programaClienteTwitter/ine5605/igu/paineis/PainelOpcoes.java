@@ -20,6 +20,13 @@ import javax.swing.JTextField;
 
 import twitter4j.TwitterException;
 
+
+/**
+ * 
+ * Painel onde estao as ferramentas que o usuario tem
+ *
+ */
+
 public class PainelOpcoes extends Painel {
 
 	private static final long serialVersionUID = 1L;

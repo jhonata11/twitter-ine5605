@@ -3,12 +3,13 @@ package g4.programaClienteTwitter.ine5605.logica.gerenciadoresTwitter;
 import twitter4j.IDs;
 import twitter4j.TwitterException;
 
-public class GerenciadorAmigos extends Gerenciador {
-	
-	
-	public GerenciadorAmigos() {
+/**
+ * Classe que define as funcoes relacionadas a amizade no programa
+ */
 
-	
+public class GerenciadorAmigos extends Gerenciador {
+
+	public GerenciadorAmigos() {
 	}
 	
 	
@@ -33,6 +34,4 @@ public class GerenciadorAmigos extends Gerenciador {
 		cont = ids.getIDs().length;	
 		return cont;
 	}
-
-
 }

@@ -11,9 +11,15 @@ import twitter4j.Status;
 import twitter4j.Tweet;
 import twitter4j.TwitterException;
 
+
+/**
+ * Classe responsavel pelo gerenciamento da timeline
+ */
 public class GerenciadorTimeline extends Gerenciador {
 
 	private DefaultListModel<Tweets>  model = new DefaultListModel<Tweets>();
+	
+	//responsavel pela formatacao do texto de um tweet
 	public Formatador formatador =  new Formatador();
 
 	public void tweetar(String text) throws TwitterException {
